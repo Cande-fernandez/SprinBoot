@@ -1,0 +1,135 @@
+🧠Sistema de Gestión de Tareas — Spring Boot
+
+Aplicación de consola desarrollada con **Spring Boot 3** que permite gestionar una lista de tareas en memoria.  
+Se configuró utilizando **perfiles (`dev` y `prod`)**, propiedades externas y beans condicionales.
+
+---
+
+## 🚀 Tecnologías utilizadas
+
+- ☕ **Java 17**
+- 🌱 **Spring Boot 3.x**
+- 🧩 **Maven**
+- 💡 **Lombok**
+
+---
+
+## 🗂️ Estructura principal del proyecto
+
+src
+├── main
+│ ├── java/com/utn/tareas
+│ │ ├── TareasApplication.java
+│ │ ├── model/
+│ │ ├── repository/
+│ │ └── service/
+│ └── resources/
+│ ├── application.properties
+│ ├── application-dev.properties
+│ └── application-prod.properties
+└── test/
+
+yaml
+Copiar código
+
+---
+
+## ⚙️ Configuración de propiedades
+
+### `application.properties`
+```properties
+spring.profiles.active=dev
+app.nombre=Tareas UTN
+app.max-tareas=10
+app.mostrar-estadisticas=true
+application-dev.properties
+properties
+Copiar código
+app.max-tareas=10
+app.mostrar-estadisticas=true
+logging.level.com.utn.tareas=DEBUG
+application-prod.properties
+properties
+Copiar código
+app.max-tareas=1000
+app.mostrar-estadisticas=false
+logging.level.com.utn.tareas=ERROR
+🧪 Ejecución
+▶️ Desde IntelliJ o VS Code
+Abrí TareasApplication.java
+
+Hacé clic derecho sobre el método main() → Run 'TareasApplication.main()'
+
+Observá la salida por consola
+
+🌱 Modo dev
+Mensajes de bienvenida/despedida detallados ([DEV] ...)
+
+Límite de 10 tareas
+
+Estadísticas visibles
+
+Logs en nivel DEBUG
+
+Ejemplo de salida:
+
+lua
+Copiar código
+[DEV] ¡Bienvenido al sistema de Tareas! Modo desarrollo activo.
+Configuración: app.nombre=Tareas UTN, app.max-tareas=10, app.mostrar-estadisticas=true
+-- Tareas iniciales --
+Tarea(id=1, descripcion=Comprar frutas, completada=false, prioridad=MEDIA)
+...
+🏭 Modo prod
+Mensajes simples (“Bienvenido.” / “Adiós.”)
+
+Límite de 1000 tareas
+
+Estadísticas desactivadas
+
+Logs en nivel ERROR
+
+Ejemplo de salida:
+
+lua
+Copiar código
+Bienvenido.
+Configuración: app.nombre=Tareas UTN, app.max-tareas=1000, app.mostrar-estadisticas=false
+-- Estadísticas --
+Estadísticas deshabilitadas
+Adiós.
+🖼️ Capturas de consola
+Agregá tus capturas aquí 👇
+
+Modo	Captura
+DEV	
+PROD	
+
+🧩 Clases principales
+Tarea y Prioridad → modelo de dominio
+
+TareaRepository → almacenamiento en memoria
+
+TareaService → lógica de negocio e inyección de propiedades
+
+MensajeService / MensajeDevService / MensajeProdService → beans condicionales por profile
+
+TareasApplication → clase principal con CommandLineRunner
+
+💬 Conclusiones
+En este trabajo se aprendió a:
+
+Crear un proyecto con Spring Initializr
+
+Organizar código con componentes, servicios y repositorios
+
+Configurar propiedades externas mediante @Value
+
+Usar profiles (dev / prod) para adaptar el comportamiento de la aplicación
+
+Ejecutar código con CommandLineRunner desde la consola
+
+✍️ Autor
+Tu nombre y apellido
+📚 UTN — Fundamentos de Spring Boot
+🗓️ Año: 2025
